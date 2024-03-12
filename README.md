@@ -1,5 +1,10 @@
 ## Configurações de entrega contínua no PythonAnyWhere
 
+### Referências 
+
+[Deploying to PythonAnywhere via GitHub](https://medium.com/@aadibajpai/deploying-to-pythonanywhere-via-github-6f967956e664)
+[syncing Github with Pythonanywhere](https://stackoverflow.com/a/54268132/9044659)
+
 ### No Github
 
 1. Criação de um webhook com o endpoint `https://{username}.pythonanywhere.com/api/update_server` e de um secret.
