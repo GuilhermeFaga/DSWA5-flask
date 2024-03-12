@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello from Flask and Github!'
+    return 'Hello from Flask and Github! TEST'
 
 
 @app.route('/update_server', methods=['POST'])
