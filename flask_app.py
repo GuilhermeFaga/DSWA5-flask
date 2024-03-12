@@ -1,10 +1,14 @@
-from flask import Flask, request
-from git import Repo
+from flask import Flask, render_template
+
+from flask_bootstrap import Bootstrap
+from flask_moment import Moment
+
 from dotenv import load_dotenv
 
-from check_signature import is_valid_signature
+from blueprints.api import bp_api
+from blueprints.app import bp_app
+from blueprints.errors import bp_err
 
-import traceback
 import os
 
 
@@ -13,31 +17,14 @@ load_dotenv(env_path)
 
 app = Flask(__name__)
 
+bootstrap = Bootstrap(app)
+moment = Moment(app)
 
-@app.route('/')
-def hello_world():
-    return 'Hello from Flask and Github! TEST'
+blueprints = [
+    bp_api,
+    bp_app,
+    bp_err
+]
 
-
-@app.route('/update_server', methods=['POST'])
-def webhook():
-    try:
-        GITHUB_WEBHOOK_TOKEN = os.getenv("GITHUB_WEBHOOK_TOKEN")
-        x_hub_signature = request.headers.get('X-Hub-Signature')
-
-        if x_hub_signature is None:
-            return 'Missing X-Hub-Signature', 400
-        
-        if not x_hub_signature.startswith('sha1='):
-            return 'Invalid X-Hub-Signature', 400
-        
-        if not is_valid_signature(x_hub_signature, request.data, GITHUB_WEBHOOK_TOKEN):
-            return 'Invalid X-Hub-Signature', 400
-        
-        repo = Repo('./mysite')
-        git = repo.git
-        git.checkout('main')
-        git.pull()
-        return 'Updated PythonAnywhere successfully', 200
-    except Exception as e:
-        return traceback.format_exc(), 500
+for bp in blueprints:
+    app.register_blueprint(bp)

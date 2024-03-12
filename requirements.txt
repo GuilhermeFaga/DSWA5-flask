@@ -1,3 +1,5 @@
 flask
 gitpython
 python-dotenv
+Flask-Bootstrap
+Flask-Moment
