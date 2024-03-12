@@ -87,6 +87,7 @@ echo "GITHUB_WEBHOOK_TOKEN={seu_secret}" >> .env
 # Criação do hook pull-merge para atualizar o servidor
 cd ~/mysite/.git/hooks
 touch post-merge
+echo "#!/bin/sh" >> post-merge
 echo "pip install -r ~/mysite/requirements.txt" >> post-merge
 echo "touch /var/www/{username}_pythonanywhere_com_wsgi.py" >> post-merge
 ```
