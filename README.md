@@ -20,5 +20,5 @@ pip install -r requirements.txt
 
 Executar o Flask
 ```bash
-flask --app flask_app.py run
+flask --app flask_app.py --debug run
 ```
