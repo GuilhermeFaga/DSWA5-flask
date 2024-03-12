@@ -5,6 +5,8 @@ from flask_moment import Moment
 
 from dotenv import load_dotenv
 
+from consts.templates import Templates
+
 from blueprints.api import bp_api
 from blueprints.app import bp_app
 from blueprints.errors import bp_err
@@ -19,6 +21,12 @@ app = Flask(__name__)
 
 bootstrap = Bootstrap(app)
 moment = Moment(app)
+
+
+@app.context_processor
+def inject_constants():
+    return dict(Templates=Templates)
+
 
 blueprints = [
     bp_api,
