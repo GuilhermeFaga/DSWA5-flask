@@ -1,0 +1,3 @@
+flask
+git
+python-dotenv
