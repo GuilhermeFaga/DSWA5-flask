@@ -3,6 +3,7 @@
 ### Referências 
 
 [Deploying to PythonAnywhere via GitHub](https://medium.com/@aadibajpai/deploying-to-pythonanywhere-via-github-6f967956e664)
+
 [syncing Github with Pythonanywhere](https://stackoverflow.com/a/54268132/9044659)
 
 ### No Github
