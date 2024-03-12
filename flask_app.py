@@ -2,7 +2,7 @@ from flask import Flask, request
 from git import Repo
 from dotenv import load_dotenv
 
-from .check_signature import is_valid_signature
+from check_signature import is_valid_signature
 
 import traceback
 import os
