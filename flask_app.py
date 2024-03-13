@@ -14,10 +14,12 @@ from blueprints.errors import bp_err
 import os
 
 
-env_path = os.path.join(os.path.dirname(__file__), '.env')
+env_path = os.path.join(os.path.dirname(__file__), ".env")
 load_dotenv(env_path)
 
 app = Flask(__name__)
+
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 bootstrap = Bootstrap(app)
 moment = Moment(app)
@@ -28,11 +30,7 @@ def inject_constants():
     return dict(Templates=Templates)
 
 
-blueprints = [
-    bp_api,
-    bp_app,
-    bp_err
-]
+blueprints = [bp_api, bp_app, bp_err]
 
 for bp in blueprints:
     app.register_blueprint(bp)

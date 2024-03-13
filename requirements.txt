@@ -3,3 +3,4 @@ gitpython
 python-dotenv
 Flask-Bootstrap
 Flask-Moment
+flask-wtf
