@@ -12,6 +12,7 @@ class Templates:
         USER = "user.html.jinja"
         CONTEXTO = "contexto.html.jinja"
         FORM = "form.html.jinja"
+        LOGIN = "login.html.jinja"
 
     @unique
     class Errors(Enum):

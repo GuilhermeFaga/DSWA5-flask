@@ -5,3 +5,4 @@ Flask-Bootstrap
 Flask-Moment
 flask-wtf
 pytz
+Flask-SQLAlchemy

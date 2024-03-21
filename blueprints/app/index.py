@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, session
 
 from consts.templates import Templates
 
@@ -11,4 +11,8 @@ bp = Blueprint("index", __name__)
 
 @bp.route("/")
 def index():
-    return render_template(Templates.App.INDEX.value, current_time=datetime.now(utc))
+    return render_template(
+        Templates.App.INDEX.value,
+        current_time=datetime.now(utc),
+        username=session.get("username"),
+    )

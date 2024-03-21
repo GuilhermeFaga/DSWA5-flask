@@ -1,0 +1,46 @@
+{% extends Templates.Base.BASE.value %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='styles/login.css')}}">
+{% endblock %}
+
+{% block title %} Flasky {% endblock %}
+
+{% block page_content %}
+
+<div class="page-header">
+  <h1>Olá, {{ nome }} {{ sobrenome }}!</h1>
+
+  <h3>A sua Insituição de ensino é {{ instituicao }}</h3>
+  <h3>Está cursando a disciplina de {{ disciplina }}</h3>
+
+  <br />
+
+  <h4>O IP do computador remoto é: {{ remote_addr }}</h4>
+  <h4>O host da aplicação é: {{ remote_host }}</h4>
+</div>
+
+<div class="page_content">
+
+  <div class="container">
+
+    <form action="/login" method="post" class="form-signin">
+      {{ form.hidden_tag() }}
+      <h2 class="form-signin-heading">Login:</h2>
+      {{ form.username(class_="input-block-level", placeholder_="Usuário ou e-mail") }}
+      {{ form.password(class_="input-block-level", placeholder_="Informe a sua senha") }}
+      {{ form.submit(class_="btn btn-large btn-primary") }}
+    </form>
+
+  </div>
+
+  <br />
+
+  <p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
+  <p>That was {{ moment(current_time).fromNow(refresh=True) }}.</p>
+</div>
+
+{% endblock %}
